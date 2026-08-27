@@ -1,0 +1,58 @@
+# nama template yang MUNCUL di daftar
+# pilihan saat siswa klik "New Issue"
+name: Submisi Rangkuman Materi
+# deskripsi singkat, MUNCUL di bawah
+# nama template sebagai penjelasan
+description: Kumpulkan rangkuman pemahaman materi mingguan
+# judul AWAL yang OTOMATIS terisi,
+# siswa tinggal lengkapi angka minggunya
+title: "[Rangkuman] Minggu ke-"
+# label OTOMATIS tertempel saat Issue
+# dibuat, memudahkan guru filter submisi
+labels: ["submisi", "rangkuman"]
+body:
+  # kolom teks PENDEK satu baris
+  # untuk nama siswa
+  - type: input
+    id: nama-siswa
+    attributes:
+      label: Nama Siswa
+      description: Tulis nama lengkap kamu
+      placeholder: "contoh: Budi Santoso"
+    # kolom WAJIB diisi, Issue tidak
+    # bisa disubmit kalau kosong
+    validations:
+      required: true
+  # kolom PILIHAN dropdown, mencegah
+  # siswa salah tulis nama minggu
+  - type: dropdown
+    id: minggu
+    attributes:
+      label: Minggu ke-
+      description: Pilih minggu materi yang kamu rangkum
+      options:
+        - Minggu 1 - Instalasi Git, konsep dasar
+        - Minggu 2 - Branch dan Merge
+        - Minggu 3 - Pull Request dan Code Review
+        - Minggu 4 - GitHub Actions dasar
+    validations:
+      required: true
+  # kolom teks PANJANG multi-baris
+  # untuk isi rangkuman pemahaman
+  - type: textarea
+    id: rangkuman
+    attributes:
+      label: Rangkuman Pemahaman
+      description: Jelaskan apa yang sudah kamu pahami dari materi minggu ini
+      placeholder: "Tulis rangkuman kamu di sini..."
+    validations:
+      required: true
+  # kolom OPSIONAL untuk kendala,
+  # boleh dikosongkan siswa
+  - type: textarea
+    id: kendala
+    attributes:
+      label: Kendala (opsional)
+      description: Ada bagian yang masih membingungkan? Tulis di sini
+    validations:
+      required: false
